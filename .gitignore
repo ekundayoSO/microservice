@@ -1,0 +1,24 @@
+.terraform/
+# Terraform state files
+terraform.tfstate
+terraform.tfstate.backup
+terraform.tfstate.d
+terraform.tfstate.json
+terraform.tfstate.lock.info
+terraform.tfstate.old
+terraform.tfstate.new
+terraform.tfstate.tmp
+terraform.tfstate.local
+terraform.tfstate.remote
+terraform.tfstate.backup.*
+terraform.tfstate.d/
+terraform.tfstate.json.*
+terraform.tfstate.lock.*
+.terraform.lock
+.terraform.lock.hcl
+.terraform.tfstate
+.terraform.tfstate.backup
+.terraform.tfstate.d
+.terraform.tfstate.json
+.terraform.tfstate.lock.info
+README-note.md

@@ -1,17 +1,17 @@
 # configured aws provider with proper credentials
 provider "aws" {
   region = "us-east-1"
-  profile= "yusuf"
+  profile= "duniola"
 }
 
 # Create a remote backend for your terraform 
 terraform {
   backend "s3" {
-    bucket = "austinobioma-docker-tfstate"
+    bucket = "duniola-docker-tfstate"
     dynamodb_table = "app-state"
     key    = "LockID"
     region = "us-east-1"
-    profile = "austinobioma-realcloud"
+    profile = "duniola"
   }
 }
 
@@ -78,6 +78,13 @@ resource "aws_security_group" "ec2_security_group" {
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
   }
+  ingress {
+    description      = "jenkins access"
+    from_port        = 8081
+    to_port          = 8081
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
 
   egress {
     from_port        = 0
@@ -116,7 +123,7 @@ resource "aws_instance" "ec2_instance1" {
   instance_type          = "t2.micro"
   subnet_id              = aws_default_subnet.default_az1.id
   vpc_security_group_ids = [aws_security_group.ec2_security_group.id]
-  key_name               = "Feb-Class"
+  key_name               = "duniola-keypair"
   user_data            = "${file("docker-install.sh")}"
 
   tags = {
